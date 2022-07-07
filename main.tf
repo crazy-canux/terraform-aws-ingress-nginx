@@ -10,9 +10,9 @@ resource "kubernetes_namespace" "ingress_nginx_namespace" {
 resource "helm_release" "ingress-nginx" {
   name       = "ingress-nginx"
   repository = var.chart_repo_url
+  version = var.chart_version
   chart      = "ingress-nginx"
   namespace  = var.namespace_name
-
   values = length(var.helm_values) > 0 ? var.helm_values : ["${file("${path.module}/helm-values.yaml")}"]
 
   dynamic "set" {
@@ -23,7 +23,6 @@ resource "helm_release" "ingress-nginx" {
       type  = set.value.type
     }
   }
-
   depends_on = [
     kubernetes_namespace.ingress_nginx_namespace
   ]

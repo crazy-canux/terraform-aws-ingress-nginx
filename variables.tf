@@ -4,6 +4,12 @@ variable "chart_repo_url" {
   default     = "https://kubernetes.github.io/ingress-nginx"
 }
 
+variable "chart_version" {
+  description = "chart version"
+  type = string
+  default = "4.1.4"
+}
+
 variable "namespace_name" {
   description = "Name for ingress-nginx namespace"
   type        = string
