@@ -13,6 +13,7 @@ variable "chart_version" {
 variable "namespace_name" {
   description = "Name for ingress-nginx namespace"
   type        = string
+  default = "ingress-nginx"
 }
 
 variable "helm_values" {
